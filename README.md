@@ -246,3 +246,5 @@ This activity strongly indicates **intentional Tor usage on the endpoint**.
 * Interview the user to determine business justification
 * Consider endpoint monitoring or application control policies if needed
 
+## Response Taken
+TOR usage was confirmed on endpoint (chucks-remote-v). The device was isolated and the user's direct manager was notified.
