@@ -41,7 +41,7 @@ DeviceFileEvents
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
 
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/71402e84-8767-44f8-908c-1805be31122d">
+<img width="3986" height="428" alt="image" src="https://github.com/user-attachments/assets/8cbd0f51-0da4-46fb-b58e-4d73b795593b" />
 
 ---
 
