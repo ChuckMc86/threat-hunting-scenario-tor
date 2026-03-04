@@ -102,61 +102,147 @@ DeviceNetworkEvents
 
 ## Chronological Event Timeline 
 
-### 1. File Download - TOR Installer
+# Tor Browser Activity Incident Report
 
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
-
-### 2. Process Execution - TOR Browser Installation
-
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
-
-### 3. Process Execution - TOR Browser Launch
-
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
-
-### 4. Network Connection - TOR Network
-
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
-
-### 5. Additional Network Connections - TOR Browser Activity
-
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
-
-### 6. File Creation - TOR Shopping List
-
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+**Device:** chucks-remote-v
+**User Account:** mylabs2025
+**Report Date:** Feb 16, 2026
 
 ---
 
-## Summary
+## Executive Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+An investigation into endpoint logs identified the download, installation, and multiple executions of the Tor Browser. Evidence confirms that the application was intentionally used to connect to the Tor network and that user-created files related to Tor activity exist on the system.
+
+This activity occurred on **Jan 27–28, 2026** and again on **Feb 11, 2026**.
+
+---
+
+## Scope of Review
+
+This report includes only events directly related to Tor Browser activity, including:
+
+* File creation and installation artifacts
+* Process execution
+* Network connections
+* User-created files tied to Tor usage
 
 ---
 
-## Response Taken
+## Detailed Timeline of Events
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+### 1) Tor Browser Download & Installation
+
+**Jan 27, 2026 – 6:29 PM**
+
+* File renamed:
+  `tor-browser-windows-x86_64-portable-15.0.4 (1).exe`
+  Location: Downloads folder
+  **Significance:** Tor installer was downloaded and prepared for execution.
+
+**Jan 27, 2026 – 6:40 PM**
+
+* File created:
+  `Desktop\Tor Browser\Browser\tor.exe`
+  **Significance:** Tor Browser extracted/installed to Desktop.
+
+**Jan 27, 2026 – 6:40 PM**
+
+* File created:
+  `Tor Browser.lnk` (desktop shortcut)
+  **Significance:** Installation completed successfully.
 
 ---
+
+### 2) First Tor Execution & Network Use
+
+**Jan 27, 2026 – 6:43 PM**
+
+* Processes started:
+
+  * `firefox.exe` (Tor Browser)
+  * Tor background processes
+
+**Jan 27, 2026 – 6:43 PM**
+
+* Network connection from `tor.exe`
+
+  * Remote IP: **192.42.116.201**
+  * Port: **9001**
+  * URL accessed:
+    `https://www.moexdq5czrfhsdh52nltwymzo.com`
+
+**Significance:**
+This confirms successful connection to the Tor network and access to a Tor (.onion) site.
+
+**Jan 27, 2026 – 6:43–6:56 PM**
+
+* Multiple local proxy connections to **127.0.0.1:9150**
+  **Significance:** Tor proxy service was actively routing browser traffic.
+
+---
+
+### 3) Tor-Related User File Created
+
+**Jan 28, 2026 – 8:18 PM**
+
+* File created:
+  `tor-shopping-list.txt` (Desktop)
+* Shortcut created in AppData.
+
+**Significance:**
+This indicates user interaction and file creation during Tor usage.
+
+---
+
+### 4) Additional Tor Usage Session
+
+**Feb 11, 2026 – 9:40 AM – 12:36 PM**
+
+* Processes executed:
+
+  * `tor.exe`
+  * `firefox.exe` (Tor Browser)
+* Multiple connections to **127.0.0.1:9150**
+
+**Significance:**
+Tor Browser was launched and actively used again.
+
+---
+
+## Files Created Related to Tor Activity
+
+### Installation & Application Artifacts
+
+* Tor Browser installer (downloaded & renamed)
+* `tor.exe` (created during extraction)
+* Tor Browser desktop shortcut
+
+### User Artifact
+
+* **tor-shopping-list.txt**
+
+This confirms hands-on user activity, not passive or background execution.
+
+---
+
+## Assessment & Conclusion
+
+Evidence confirms that Tor Browser was:
+
+* Downloaded and installed intentionally
+* Successfully executed
+* Used to connect to the Tor network
+* Used across multiple sessions
+* Used during creation of a user document
+
+This activity strongly indicates **intentional Tor usage on the endpoint**.
+
+---
+
+## Recommended Next Steps (Optional)
+
+* Verify whether Tor usage violates organizational policy
+* Interview the user to determine business justification
+* Consider endpoint monitoring or application control policies if needed
+
