@@ -68,19 +68,18 @@ No Process Was Detected.
 
 ### 3. Searched the `DeviceProcessEvents` Table for TOR Browser Execution
 
-Searched for any indication that user "employee" actually opened the TOR browser. There was evidence that they did open it at `2024-11-08T22:17:21.6357935Z`. There were several other instances of `firefox.exe` (TOR) as well as `tor.exe` spawned afterwards.
+Searched for any indication that user "chucks-remote-v" actually opened the TOR browser. There was evidence that they did open it at `2026-01-27T18:43:43Z`. There were several other instances of `firefox.exe` (TOR) as well as `tor.exe` spawned afterwards.
 
 **Query used to locate events:**
 
 ```kql
 DeviceProcessEvents  
-| where DeviceName == "threat-hunt-lab"  
+| where DeviceName == "chucks-remote-v"  
 | where FileName has_any ("tor.exe", "firefox.exe", "tor-browser.exe")  
 | project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine  
 | order by Timestamp desc
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/b13707ae-8c2d-4081-a381-2b521d3a0d8f">
-
+<img width="3358" height="474" alt="image" src="https://github.com/user-attachments/assets/ecf62976-0ac1-4559-bfcd-66e08d66faca" />
 ---
 
 ### 4. Searched the `DeviceNetworkEvents` Table for TOR Network Connections
